@@ -34,6 +34,7 @@ targets:
         # - More info on https://docs.databricks.com/aws/en/dev-tools/bundles/deployment-modes#custom-presets
       name_prefix: ''
       pipelines_development: true
+      trigger_pause_status : "PAUSED"
       tags: 
         Environmentv: dev
         Project: ${var.project_name}
