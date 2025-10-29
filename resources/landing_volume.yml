@@ -1,0 +1,19 @@
+resources:
+  volumes:
+    landing_volume:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.bronze_schema.name}
+      name: landing
+      grants:
+        - principal: ${var.data_engineers}
+          privileges:
+            - READ_VOLUME
+      comment: |
+        # Landing volume inside ${resources.schemas.bronze_schema.name} schema.
+
+        This volume was created by **${workspace.current_user.displayName}** from DABs.
+
+        Repo URL: **${bundle.git.origin_url}** using the branch **${bundle.git.branch}**
+
+        * The following group has READ_VOLUME grants:
+        * **${var.data_engineers}**

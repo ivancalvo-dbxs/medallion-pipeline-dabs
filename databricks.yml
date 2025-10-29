@@ -1,0 +1,40 @@
+bundle:
+  name: medallion_dabs
+
+variables:
+  catalog: 
+    description: "Catalog that would contain the schemas"
+    default: "amer_sts_catalog"
+  project_name:
+    description: "Name of the project or use case for the 3 medallion schemas"
+    default: "superproject"
+  landing_zone_directory:
+    description: "Located in catalog - bronze schema - landing volume - HERE"
+    default: "/Volumes/${var.catalog}/${resources.schemas.bronze_schema.name}/${resources.volumes.landing_volume.name}/customers"
+  data_engineers:
+    description: "This group can managed the bronze, silver and gold schemas"
+    default: "users"
+  data_consumers:
+    description: "Group that can query the gold schema business tables"
+    default: "users"
+  
+
+include:
+  - ./resources/*.yml
+
+targets:
+  dev:
+    default: true
+    workspace:
+      host: https://adb-984752964297111.11.azuredatabricks.net/
+    
+    presets:
+      # Setting an empty prefix to remove development mode prepend:
+        # - Prepends all resources that are not deployed as files or notebooks with the prefix [dev ${workspace.current_user.short_name}]
+        # - More info on https://docs.databricks.com/aws/en/dev-tools/bundles/deployment-modes#custom-presets
+      name_prefix: ''
+      pipelines_development: true
+      tags: 
+        Environmentv: dev
+        Project: ${var.project_name}
+        dev: ${workspace.current_user.userName}

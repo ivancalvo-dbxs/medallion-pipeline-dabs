@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+    example_pipeline:
+      name: "Example of a pipeline with a schema"
+
+      catalog: ${var.catalog}
+      target: ${resources.schemas.bronze_schema.name}
+
+      libraries:
+        - file:
+            path: ../src/range.sql
+        - file:
+            path: ../src/double.sql
+
+      serverless: true
