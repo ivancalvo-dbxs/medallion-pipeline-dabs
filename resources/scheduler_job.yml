@@ -1,0 +1,36 @@
+resources:
+  jobs:
+    scheduler_job:
+      name: "[${bundle.target} ${bundle.name}] Job for orchestration"
+      description: "Generates fake data, then process the deltas / new file arrivals through the pipeline."
+
+      queue:
+        enabled: true
+      permissions:
+      - group_name: ${var.data_engineers}
+        level: CAN_MANAGE_RUN
+
+      # NO TRIGGER NOR SCHEDULE CONFIGURED ON THIS DEMO
+      #trigger:
+      #  periodic:
+      #    interval: 1
+      #    unit: DAYS
+
+      #schedule: 
+      #   timezone_id: America/Los_Angeles
+      #   quartz_cron_expression: "0 0 3 * * ?"
+
+      tasks:
+        # Task #1: Generate new fake data.
+        - task_key: generate_fake_data
+          notebook_task:
+            notebook_path: ../src/faker_notebook.ipynb
+            base_parameters:
+              landing_zone_volume: ${var.landing_zone_volume}
+
+        # Task #2: Process the deltas.
+        - task_key: run_pipeline
+          depends_on:
+            - task_key: generate_fake_data
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.customers_orders_pipeline.id}

@@ -8,16 +8,15 @@ variables:
   project_name:
     description: "Name of the project or use case for the 3 medallion schemas"
     default: "superproject"
-  landing_zone_directory:
+  landing_zone_volume:
     description: "Located in catalog - bronze schema - landing volume - HERE"
-    default: "/Volumes/${var.catalog}/${resources.schemas.bronze_schema.name}/${resources.volumes.landing_volume.name}/customers"
+    default: "/Volumes/${var.catalog}/${resources.schemas.bronze_schema.name}/${resources.volumes.landing_volume.name}"
   data_engineers:
     description: "This group can managed the bronze, silver and gold schemas"
     default: "users"
   data_consumers:
     description: "Group that can query the gold schema business tables"
     default: "users"
-  
 
 include:
   - ./resources/*.yml
@@ -39,3 +38,4 @@ targets:
         Environmentv: dev
         Project: ${var.project_name}
         dev: ${workspace.current_user.userName}
+      
