@@ -1,7 +1,7 @@
 resources:
   pipelines:
     customers_orders_pipeline:
-      name: "[${bundle.target} ${bundle.name}] Pipeline for Customers & Orders data"
+      name: "[${bundle.target} ${bundle.name}] Medallion Spark Pipeline"
 
       catalog: ${var.catalog}
       schema: ${resources.schemas.bronze_schema.name}
