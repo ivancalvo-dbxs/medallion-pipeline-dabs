@@ -1,7 +1,7 @@
 resources:
   jobs:
     scheduler_job:
-      name: "[${bundle.target} ${bundle.name}] Lakeflow Job"
+      name: "Lakeflow Job"
       description: "Generates fake data, then process the deltas / new file arrivals through the pipeline."
 
       queue:
