@@ -29,7 +29,7 @@ targets:
       # Setting an empty prefix to remove development mode prepend.
       # - Prepends all resources that are not deployed as files or notebooks with the prefix [dev ${workspace.current_user.short_name}]
       # - More info on https://docs.databricks.com/aws/en/dev-tools/bundles/deployment-modes#custom-presets
-      name_prefix: '[${bundle.target} ${bundle.name}] '
+      name_prefix: ''
       pipelines_development: true
       trigger_pause_status : "PAUSED"
       tags: 
