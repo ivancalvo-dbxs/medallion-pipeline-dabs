@@ -1,12 +1,31 @@
-# Pipeline with a dedicated Unity Catalog schema
+# Repo content.
 
-This example demonstrates how to define a Unity Catalog schema and a Delta Live Tables pipeline that uses it.
+A DABs implementation of the medallion arquitecture on Unity Catalog.
+
+# What Databricks and Unity Catalog resources does DABs created?
+
+- Unity Catalog:
+    - Three schemas:
+        - bronze
+        - silver
+        - gold
+    - A volume:
+        - landing volume (on the bronze schema)
+
+- Workspace Assets:
+    - A job:
+        - two tasks:
+            - task #1: generates fake parquet files on the landing volume.
+            - task #2: triggers the declarative pipeline.
+    - A declarative pipeline: 
+        - reads from the landing volume.
+        - generates tables on bronze, silver and gold schemas.
 
 ## Prerequisites
 
 * Databricks CLI v0.225.0 or above
 
-## Usage
+## Youtube Walkthrough
 
 Update the `host` field under `workspace` in `databricks.yml` to the Databricks workspace you wish to deploy to.
 

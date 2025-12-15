@@ -28,7 +28,7 @@ resources:
             base_parameters:
               landing_zone_volume: ${var.landing_zone_volume}
 
-        # Task #2: Process the deltas.
+        # Task #2: Run the pipelines.
         - task_key: run_pipeline
           depends_on:
             - task_key: generate_fake_data

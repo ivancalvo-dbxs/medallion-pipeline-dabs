@@ -13,7 +13,5 @@ resources:
 
         This schema was created by **${workspace.current_user.displayName}** from DABs.
 
-        Repo URL: **${bundle.git.origin_url}** using the branch **${bundle.git.branch}**
-
         * The following group has ALL_PRIVILEGES grants:
         * **${var.data_engineers}**

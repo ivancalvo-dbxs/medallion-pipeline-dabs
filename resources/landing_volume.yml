@@ -13,7 +13,5 @@ resources:
 
         This volume was created by **${workspace.current_user.displayName}** from DABs.
 
-        Repo URL: **${bundle.git.origin_url}** using the branch **${bundle.git.branch}**
-
         * The following group has READ_VOLUME grants:
         * **${var.data_engineers}**
