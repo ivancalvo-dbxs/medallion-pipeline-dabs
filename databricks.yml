@@ -5,7 +5,7 @@ bundle:
 variables:
   catalog: 
     description: "Catalog that would contain the schemas"
-    default: amer_sts_catalog
+    default: my_catalog
   landing_zone_volume:
     description: "Located in catalog - bronze schema - landing volume - HERE"
     default: "/Volumes/${var.catalog}/${resources.schemas.bronze_schema.name}/${resources.volumes.landing_volume.name}"
@@ -23,7 +23,7 @@ targets:
   dev:
     default: true
     workspace:
-      host: https://adb-984752964297111.11.azuredatabricks.net/
+      host: https://my-workspace.com/
     
     presets:
       # Setting an empty prefix to remove development mode prepend.

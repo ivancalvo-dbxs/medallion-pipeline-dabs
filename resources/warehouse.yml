@@ -1,0 +1,7 @@
+resources:
+  sql_warehouses:
+    project_warehouse:
+      name: "${bundle.name} Warehouse"
+      auto_stop_mins: 120
+      cluster_size: 2X-Small
+      enable_serverless_compute: true
