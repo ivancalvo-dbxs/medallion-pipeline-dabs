@@ -1,9 +1,8 @@
-# Repo content.
+# Medallion Architecture on Unity Catalog using DABs
 
 A DABs implementation of a medallion arquitecture pipeline in Unity Catalog.
 
 ![Medallion Architecture](images/medallion-dabs.jpg)
-
 
 # Databricks and Unity Catalog resources created.
 
@@ -37,7 +36,8 @@ For this project, the resources highlighted in green were required.
 
 ## Prerequisites
 
-* Databricks CLI v0.225.0 or above
+* Databricks CLI v0.269.0 or above
 
 ## Youtube Walkthrough
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/W8ucHwzwdhc/0.jpg)](https://www.youtube.com/watch?v=W8ucHwzwdhc)
